@@ -2,7 +2,7 @@ package com.it_academy.homework5;
 
 import com.it_academy.homework5.onliner.Links;
 import com.it_academy.homework5.onliner.page_object.pages.CatalogPage;
-import com.it_academy.homework5.onliner.page_object.pages.HomePage;
+import com.it_academy.homework5.onliner.page_object.pages.Header;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
@@ -15,7 +15,7 @@ import java.util.List;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class CatalogPageTest {
-    private HomePage homePage = new HomePage();
+    private Header header = new Header();
     private CatalogPage catalogPage = new CatalogPage();
     @DataProvider(name = "sections")
     public static Object[][] sections() {
@@ -36,25 +36,25 @@ public class CatalogPageTest {
     }
     @BeforeClass
     public void navigateToHomePage() {
-        homePage.navigate(Links.homepage.getLink());
+        header.navigate(Links.homepage.getLink());
     }
     @Test
     public void testNavigateToCatalog() {
-        homePage.clickOnSectionLink("Каталог");
+        header.clickOnMainNavigationLink("Каталог");
         assertThat(catalogPage.getBrowserTitle())
                 .as("Title of Catalog is incorrect")
                 .isEqualTo("Каталог Onlíner");
     }
     @Test(dataProvider = "sections")
     public void testSectionsOnCatalog(String str1, String answer) {
-        homePage.clickOnSectionLink("Каталог");
+        header.clickOnMainNavigationLink("Каталог");
         assertThat(catalogPage.getTextFromSectionCatalog(str1))
                 .as("Browser title on Catalog page is incorrect")
                 .isEqualTo(answer);
     }
     @Test(dataProvider = "verticalList")
     public void testVerticalListOnComputersSection(String str1, String expected) {
-        homePage.clickOnSectionLink("Каталог");
+        header.clickOnMainNavigationLink("Каталог");
         catalogPage.clickOnSectionCatalogLink("Компьютеры и\u00a0сети");
         assertThat(catalogPage.getTextSectionItemCatalogLink(str1))
                 .as("В списке отсутсвуют некоторые элементы")
@@ -62,7 +62,7 @@ public class CatalogPageTest {
     }
     @Test
     public void testTitleOfList() {
-        homePage.clickOnSectionLink("Каталог");
+        header.clickOnMainNavigationLink("Каталог");
         catalogPage.clickOnSectionCatalogLink("Компьютеры и\u00a0сети");
         catalogPage.clickTextSectionItemCatalog("Комплектующие");
         Collection<String> collect = catalogPage.checkTitleOfCatalogPage("Комплектующие");
@@ -72,7 +72,7 @@ public class CatalogPageTest {
     }
     @Test
     public void testGoodsOfList() {
-        homePage.clickOnSectionLink("Каталог");
+        header.clickOnMainNavigationLink("Каталог");
         catalogPage.clickOnSectionCatalogLink("Компьютеры и\u00a0сети");
         catalogPage.clickTextSectionItemCatalog("Комплектующие");
         List<String> collect = catalogPage.checkGoodsCatalogPage("Комплектующие");
@@ -82,7 +82,7 @@ public class CatalogPageTest {
     }
     @Test
     public void testComponentGoodsOfList() {
-        homePage.clickOnSectionLink("Каталог");
+        header.clickOnMainNavigationLink("Каталог");
         catalogPage.clickOnSectionCatalogLink("Компьютеры и\u00a0сети");
         catalogPage.clickTextSectionItemCatalog("Комплектующие");
         List<WebElement> components = catalogPage.getGoodsComponentsByName("Комплектующие");
@@ -93,7 +93,7 @@ public class CatalogPageTest {
     }
     @Test
     public void testTitleGoodsOfList() {
-        homePage.clickOnSectionLink("Каталог");
+        header.clickOnMainNavigationLink("Каталог");
         catalogPage.clickOnSectionCatalogLink("Компьютеры и\u00a0сети");
         catalogPage.clickTextSectionItemCatalog("Комплектующие");
         List<WebElement> components = catalogPage.getGoodsComponentsByName("Комплектующие");
@@ -103,7 +103,7 @@ public class CatalogPageTest {
     }
     @Test
     public void testComponentPreviewsCountGoodsOfList() {
-        homePage.clickOnSectionLink("Каталог");
+        header.clickOnMainNavigationLink("Каталог");
         catalogPage.clickOnSectionCatalogLink("Компьютеры и\u00a0сети");
         catalogPage.clickTextSectionItemCatalog("Комплектующие");
         List<WebElement> components = catalogPage.getGoodsComponentsByName("Комплектующие");
@@ -116,7 +116,7 @@ public class CatalogPageTest {
     }
     @Test
     public void testComponentDescriptionCountGoodsOfList() {
-        homePage.clickOnSectionLink("Каталог");
+        header.clickOnMainNavigationLink("Каталог");
         catalogPage.clickOnSectionCatalogLink("Компьютеры и\u00a0сети");
         catalogPage.clickTextSectionItemCatalog("Комплектующие");
         List<WebElement> components = catalogPage.getGoodsComponentsByName("Комплектующие");
@@ -126,6 +126,6 @@ public class CatalogPageTest {
     }
     @AfterSuite
     public void closeWindow() {
-        homePage.closeAllWindow();
+        header.closeAllWindow();
     }
 }
