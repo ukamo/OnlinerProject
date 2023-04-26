@@ -1,0 +1,7 @@
+com\it_academy\homework5\onliner\page_object\pages\HomePage.class
+com\it_academy\homework5\onliner\page_object\BasePage.class
+com\it_academy\homework5\onliner\page_object\pages\ProductPage.class
+com\it_academy\homework5\onliner\page_object\pages\Header.class
+com\it_academy\homework5\onliner\framework\DriveManager.class
+com\it_academy\homework5\onliner\Links.class
+com\it_academy\homework5\onliner\page_object\pages\CatalogPage.class
