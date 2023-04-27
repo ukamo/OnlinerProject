@@ -56,7 +56,6 @@ public class CatalogPage extends BasePage {
         waitForElementVisible(By.xpath(String.format(TITLE_XPATH_PATTERN, testContains)));
         List<WebElement> elements = getWebDriver().findElements(By.xpath(format(TITLE_XPATH_PATTERN, testContains)));
         List<String> collect = elements.stream().map(WebElement::getText).collect(Collectors.toList());
-        System.out.println(collect);
         return collect;
     }
 
