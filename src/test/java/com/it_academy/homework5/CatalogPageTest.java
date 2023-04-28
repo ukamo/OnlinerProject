@@ -110,9 +110,6 @@ public class CatalogPageTest {
         assertThat(catalogPage.checkComponentPreviewsCount(components))
                 .as("Количество превью не соответствует количеству компонентов")
                 .isTrue();
-        assertThat(catalogPage.checkComponentDescriptionCount(components))
-                .as("Количество описания не соответствует количеству компонентов")
-                .isTrue();
     }
     @Test
     public void testComponentDescriptionCountGoodsOfList() {
